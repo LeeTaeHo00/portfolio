@@ -13,21 +13,25 @@
         /* ======================================================= */
         :root {
             /* 부드러운 색상 팔레트 */
-            --color-bg-light: #f0f0f0;  /* 밝은 회색 (콘솔 화면) */
-            --color-bg-dark: #2c3e50;   /* 어두운 배경 (네이비/차콜) */
-            --color-accent-blue: #3498db; /* 강조 파랑 */
-            --color-accent-green: #2ecc71; /* 강조 초록 (성공/링크) */
-            --color-text-main: #333333; /* 본문 텍스트 */
-            --color-text-light: #ecf0f1; /* 밝은 텍스트 */
-            --color-border-main: #333333; /* 두꺼운 테두리 */
+            --color-bg-light: #f0f0f0; 
+            --color-bg-dark: #2c3e50; 
+            --color-accent-blue: #3498db; 
+            --color-accent-green: #2ecc71; 
+            --color-text-main: #333333; 
+            --color-text-light: #ecf0f1; 
+            --color-border-main: #333333; 
             
             --font-pixel: 'Press Start 2P', cursive;
-            --font-terminal: 'VT323', monospace; /* 보조 폰트 (본문 가독성용) */
+            --font-terminal: 'VT323', monospace; 
         }
 
         /* ------------------ Base Style ------------------- */
+        html {
+            scroll-behavior: smooth;
+        }
+        
         body {
-            font-family: var(--font-terminal); /* 본문은 가독성을 위해 터미널 폰트 사용 */
+            font-family: var(--font-terminal); 
             background-color: var(--color-bg-dark);
             color: var(--color-text-light);
             margin: 0;
@@ -39,9 +43,9 @@
         }
         
         h1, h2, h3 { 
-            font-family: var(--font-pixel); /* 제목에만 픽셀 폰트 사용 */
+            font-family: var(--font-pixel); 
             text-transform: uppercase;
-            text-shadow: 2px 2px var(--color-dark); /* 절제된 픽셀 그림자 */
+            text-shadow: 2px 2px var(--color-dark); 
             margin-top: 0;
         }
         
@@ -57,12 +61,23 @@
             text-align: left;
         }
 
-        /* ------------------ Header & Nav ------------------- */
+        /* ------------------ Header & Nav (수정됨: 상단 고정) ------------------- */
         .retro-header {
+            /* 헤더를 화면 상단에 고정하는 핵심 속성 */
+            position: fixed; 
+            top: 0;
+            width: 100%; /* 너비를 전체로 확장 */
+            z-index: 1000; /* 다른 요소 위에 표시되도록 설정 */
+            
             background-color: var(--color-bg-dark);
             padding: 30px 20px;
             border-bottom: 4px solid var(--color-accent-blue);
-            margin-bottom: 40px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* 그림자 추가로 내용과 구분 */
+        }
+        
+        /* 헤더가 고정되면 메인 콘텐츠가 헤더 뒤로 숨겨지므로, 헤더 높이만큼 마진을 줍니다. */
+        .spacer {
+            height: 110px; /* 헤더의 대략적인 높이 (padding과 content 포함)에 맞춰 조절 */
         }
 
         .nav-button {
@@ -74,8 +89,9 @@
             margin: 0 8px;
             display: inline-block;
             border: 2px solid var(--color-border-main);
-            box-shadow: 2px 2px 0 var(--color-border-main); /* 절제된 그림자 */
+            box-shadow: 2px 2px 0 var(--color-border-main); 
             transition: all 0.1s;
+            cursor: pointer;
         }
 
         .nav-button:hover {
@@ -88,10 +104,11 @@
         .retro-section {
             background-color: var(--color-bg-light);
             padding: 30px;
-            margin-bottom: 30px;
+            margin-bottom: 50px; 
             border: 4px solid var(--color-border-main);
             box-shadow: 6px 6px 0 var(--color-border-main); 
-            color: var(--color-text-main); /* 텍스트 색상 변경 */
+            color: var(--color-text-main); 
+            min-height: 400px;
         }
         
         .retro-section h2 {
@@ -174,6 +191,7 @@
             padding: 15px;
             font-size: 10px;
             border-top: 2px solid var(--color-accent-blue);
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -181,12 +199,15 @@
     <header class="retro-header">
         <h1>:: [당신의 이름] :: 시스템 부팅 완료</h1>
         <nav>
-            <a href="#about" class="nav-button">데이터 1 :: 소개</a>
-            <a href="#projects" class="nav-button">데이터 2 :: 프로젝트</a>
-            <a href="#contact" class="nav-button">접속 :: LINK</a>
+            <a href="#about" class="nav-button" data-target="about">데이터 1 :: 소개</a>
+            <a href="#skills" class="nav-button" data-target="skills">데이터 2 :: 기술</a>
+            <a href="#projects" class="nav-button" data-target="projects">데이터 3 :: 프로젝트</a>
+            <a href="#contact" class="nav-button" data-target="contact">접속 :: LINK</a>
         </nav>
     </header>
 
+    <div class="spacer"></div> 
+    
     <main class="container">
         <section id="about" class="retro-section">
             <h2>> 사용자 기록 파일</h2>
@@ -194,10 +215,22 @@
                 <p style="font-family: var(--font-terminal);">
                     STATUS: 온라인 <br>
                     직무: [당신의 직무/역할] <br>
-                    스택: HTML, CSS, JavaScript, [다른 기술]. <br>
                     목표: [당신의 목표 문구].
                 </p>
                 <a href="[이력서 파일 링크]" class="action-button">파일 다운로드 :: RUN</a>
+            </div>
+        </section>
+
+        <section id="skills" class="retro-section">
+            <h2>> 스킬셋 로드 완료</h2>
+            <div class="content-block">
+                <p style="font-family: var(--font-terminal);">
+                    **FRONT-END**: HTML, CSS, JavaScript, React/Vue/Angular <br>
+                    **BACK-END**: Node.js, Python(Django/Flask), PHP <br>
+                    **DATABASE**: MySQL, PostgreSQL, MongoDB <br>
+                    **TOOLS**: Git, Docker, AWS/Azure
+                </p>
+                <a href="#" class="action-button small-button">상세 기록 :: VIEW</a>
             </div>
         </section>
 
@@ -214,6 +247,11 @@
                     <p style="font-family: var(--font-terminal);">설명: [간단한 설명]</p>
                     <a href="[프로젝트 2 링크]" target="_blank" class="action-button small-button">검토 :: OPEN</a>
                 </div>
+                <div class="project-item">
+                    <h3>프로젝트 03 :: [이름]</h3>
+                    <p style="font-family: var(--font-terminal);">설명: [간단한 설명]</p>
+                    <a href="[프로젝트 3 링크]" target="_blank" class="action-button small-button">검토 :: OPEN</a>
+                </div>
             </div>
         </section>
 
@@ -223,7 +261,7 @@
                 <p style="font-family: var(--font-terminal);">
                     **:: 주요 통신 채널 ::** <br>
                     E-mail: <a href="mailto:your_email@example.com" class="link-style">your_email@example.com</a> <br>
-                    GitHub: <a href="[당신의 깃허브 주소]" target="_blank" class="link-style">[GitHub ID]</a>
+                    GitHub: <a href="[당신의 깃허브 주소]" target="_blank" class="link-style">GIT :: [GitHub ID]</a>
                 </p>
                 <hr style="border: 1px dashed var(--color-border-main); margin: 15px 0;">
                 <p style="font-family: var(--font-terminal);">
@@ -239,5 +277,33 @@
     <footer class="retro-footer">
         <p>&copy; [현재 연도] :: [당신의 이름] :: 시스템 안정화</p>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 모든 내비게이션 버튼을 가져옵니다.
+            const navButtons = document.querySelectorAll('.nav-button');
+            const headerHeight = document.querySelector('.retro-header').offsetHeight; // 헤더 높이 동적 계산
+
+            navButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault(); 
+
+                    const targetId = this.getAttribute('data-target');
+                    const targetElement = document.getElementById(targetId);
+
+                    if (targetElement) {
+                        // 스크롤 위치 계산: 대상 요소의 상단 위치 - 고정 헤더의 높이
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                        
+                        // 부드러운 스크롤 실행
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
