@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚙️ [당신의 이름] - 디젤펑크 포트폴리오</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    
+    <style>
+        /* :: CORE SYSTEM CONFIGURATION :: */
+        :root {
+            --color-bg-dark: #1e1e1e; /* 엔진룸 배경 */
+            --color-panel-mid: #333333; /* 패널 본체 */
+            --color-accent-brown: #8B4513; /* 녹슨 갈색 */
+            --color-accent-red: #A52A2A; /* 녹슨 빨강 */
+            --color-metal-light: #D2B48C; /* 낡은 황동/구리 */
+            --color-text-main: #c0c0c0; /* 메인 텍스트 */
+            --color-terminal-green: #0f0; /* 터미널 스크린 색상 */
+            --font-mono: 'Share Tech Mono', 'Roboto Mono', monospace;
+        }
+
+        body {
+            font-family: var(--font-mono);
+            background-color: var(--color-bg-dark);
+            color: var(--color-text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            /* 미세한 노이즈/패턴 */
+            background-image: repeating-linear-gradient(
+                45deg,
+                rgba(255, 255, 255, 0.05) 0,
+                rgba(255, 255, 255, 0.05) 2px,
+                transparent 2px,
+                transparent 5px
+            ); 
+        }
+
+        /* === 타이포그래피 === */
+        h1, h2, h3 {
+            text-transform: uppercase;
+            color: var(--color-metal-light);
+            text-shadow: 2px 2px #000;
+        }
+
+        /* === 헤더 및 네비게이션 :: 제어판 === */
+        .diesel-header {
+            background-color: var(--color-panel-mid);
+            padding: 25px 20px;
+            border-bottom: 7px solid var(--color-accent-brown);
+            text-align: center;
+            box-shadow: 0 7px 15px rgba(0, 0, 0, 0.7);
+            margin-bottom: 40px;
+        }
+
+        .diesel-header h1 {
+            letter-spacing: 7px;
+            margin-bottom: 15px;
+            font-size: 2.2em;
+        }
+
+        .nav-button {
+            background-color: #555;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 12px;
+            display: inline-block;
+            border: 3px outset var(--color-accent-red); /* 튀어나온 금속 느낌 */
+            box-shadow: 4px 4px 0 #000;
+            transition: all 0.1s;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .nav-button:hover {
+            background-color: #696969;
+            border-style: inset; /* 눌리는 느낌 */
+            box-shadow: 2px 2px 0 #000;
+            color: #FFD700; /* 금색 하이라이트 */
+        }
+
+        /* === 본문 컨테이너 및 섹션 :: 작업 영역 === */
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .panel {
+            background-color: var(--color-panel-mid);
+            padding: 40px;
+            margin-bottom: 50px;
+            border: 5px solid var(--color-accent-brown);
+            box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.8);
+            position: relative;
+        }
+
+        /* 섹션 구분자 - 금속 막대 */
+        .panel:before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: 0;
+            right: 0;
+            height: 10px;
+            background: repeating-linear-gradient(
+                90deg,
+                var(--color-metal-light),
+                var(--color-metal-light) 10px,
+                #444 10px,
+                #444 20px
+            ); /* 리벳 장식 */
+        }
+
+        .panel h2 {
+            border-bottom: 3px solid var(--color-accent-red);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+            letter-spacing: 3px;
+            font-size: 1.8em;
+        }
+
+        /* === 콘텐츠 박스 :: 터미널 스크린 === */
+        .content-box {
+            background-color: #111;
+            padding: 20px;
+            border: 2px solid var(--color-terminal-green);
+            box-shadow: inset 0 0 15px var(--color-terminal-green); /* 빛나는 터미널 효과 */
+            font-size: 1.1em;
+        }
+
+        .content-box p {
+            color: var(--color-terminal-green);
+            text-shadow: 0 0 3px var(--color-terminal-green); /* 글자 빛 효과 */
+            margin: 0 0 15px 0;
+        }
+
+        /* === 프로젝트 목록 그리드 === */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .project-item {
+            background-color: #4a4a4a;
+            padding: 25px;
+            border: 4px groove #696969; /* 투박한 홈 파인 경계 */
+        }
+
+        /* === 버튼 스타일 :: 레버 및 스위치 === */
+        .action-button {
+            background-color: var(--color-accent-brown);
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 25px;
+            display: inline-block;
+            margin-top: 20px;
+            border: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+            /* 볼트/리벳 효과 */
+            box-shadow: 
+                -5px -5px 0 0 var(--color-accent-red), 
+                5px -5px 0 0 var(--color-accent-red),  
+                -5px 5px 0 0 var(--color-accent-red),   
+                5px 5px 0 0 var(--color-accent-red);    
+            transition: all 0.1s;
+        }
+
+        .action-button:hover {
+            background-color: var(--color-accent-red); 
+            transform: translateY(2px); /* 레버를 누르는 느낌 */
+            box-shadow: 
+                -3px -3px 0 0 var(--color-accent-brown), 
+                3px -3px 0 0 var(--color-accent-brown), 
+                -3px 3px 0 0 var(--color-accent-brown), 
+                3px 3px 0 0 var(--color-accent-brown); 
+        }
+
+        /* 작은 버튼 스타일 */
+        .small-button {
+            padding: 8px 15px;
+            font-size: 0.9em;
+        }
+
+        /* === 링크 스타일 :: 배선 === */
+        .link-style {
+            color: #FFA500; /* 눈에 띄는 주황색 (경고등 느낌) */
+            text-decoration: none;
+            border-bottom: 1px dashed #FFA500;
+        }
+
+        .link-style:hover {
+            color: #FFD700; /* 금색 */
+            border-bottom: 2px solid #FFD700;
+        }
+
+        /* === 푸터 :: 시스템 모니터 === */
+        .diesel-footer {
+            background-color: #111;
+            color: #696969;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+            border-top: 5px double var(--color-accent-red);
+        }
+    </style>
+    </head>
+<body>
+    <header class="diesel-header">
+        <h1>[엔진 명칭] :: 디젤펑크 시스템</h1>
+        <nav>
+            <a href="#about" class="nav-button">소개 :: GAUGE 1</a>
+            <a href="#projects" class="nav-button">프로젝트 :: GAUGE 2</a>
+            <a href="#contact" class="nav-button">연락 :: CONTACT</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section id="about" class="panel">
+            <h2>운영자 파일 :: [당신의 이름]</h2>
+            <div class="content-box">
+                <p>
+                    [당신의 직무/역할] :: 가동 개시. <br>
+                    시스템에 다음과 같은 기술 스택이 탑재되어 있습니다: HTML, CSS, JavaScript, [다른 기술]. <br>
+                    목표: [당신의 목표 문구].
+                </p>
+                <a href="#" class="action-button">이력서 다운로드 :: LOAD FILE</a>
+            </div>
+        </section>
+
+        <section id="projects" class="panel">
+            <h2>주요 부품 목록 :: 프로젝트 로그</h2>
+            <div class="project-grid">
+                <div class="project-item">
+                    <h3>프로젝트 #01 :: [프로젝트 이름]</h3>
+                    <p>개발 목표: [간단한 설명]</p>
+                    <a href="#" class="action-button small-button">검사 :: INSPECT</a>
+                </div>
+                <div class="project-item">
+                    <h3>프로젝트 #02 :: [프로젝트 이름]</h3>
+                    <p>개발 목표: [간단한 설명]</p>
+                    <a href="#" class="action-button small-button">검사 :: INSPECT</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="panel">
+            <h2>송신 장치 :: 연결</h2>
+            <div class="content-box">
+                <p>
+                    통신 포트: <br>
+                    이메일: <a href="mailto:your_email@example.com" class="link-style">your_email@example.com</a> <br>
+                    GitHub: <a href="[당신의 깃허브 주소]" target="_blank" class="link-style">[GitHub ID]</a>
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="diesel-footer">
+        <p>&copy; [현재 연도] :: [당신의 이름] :: 시스템 가동 중</p>
+    </footer>
+</body>
+</html>
