@@ -3,107 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>👾 [당신의 이름] - 8비트 포트폴리오</title>
+    <title>🍄 [당신의 이름] - 슈퍼 마리오 포트폴리오</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     
     <style>
-        /* :: CORE SYSTEM CONFIGURATION :: */
+        /* ======================================================= */
+        /* :: Super Mario 8-bit Style Guide :: */
+        /* ======================================================= */
         :root {
-            --color-bg: #222222; /* 배경 (검은색에 가까운 어두운 회색) */
-            --color-text: #00ff00; /* 터미널 녹색 */
-            --color-primary: #ff0000; /* 액션 버튼 빨강 */
-            --color-secondary: #0000ff; /* 강조 파랑 */
-            --color-panel: #444444; /* 섹션 패널 */
-            --color-border: #ffffff; /* 흰색 아웃라인 */
+            --mario-sky: #6B8EAD; 
+            --mario-grass: #32CD32; 
+            --mario-brick: #A52A2A; 
+            --mario-red: #E74C3C; 
+            --mario-coin: #F1C40F; 
+            --color-dark: #000000;
+            --color-light: #ffffff;
             --font-pixel: 'Press Start 2P', cursive;
         }
 
+        /* ------------------ Base Style ------------------- */
         body {
             font-family: var(--font-pixel);
-            background-color: var(--color-bg);
-            color: var(--color-text);
+            background-color: var(--mario-sky);
+            color: var(--color-dark);
             margin: 0;
             padding: 0;
             line-height: 1.8;
-            font-size: 10px; /* 픽셀 폰트는 작게 설정 */
-            /* 배경에 그리드 패턴 추가 */
-            background-image: linear-gradient(to right, #333 1px, transparent 1px),
-                              linear-gradient(to bottom, #333 1px, transparent 1px);
-            background-size: 20px 20px;
+            font-size: 10px;
+            min-height: 100vh;
+            /* 잔디와 하늘 배경 */
+            background-image: linear-gradient(to top, var(--mario-grass) 0, var(--mario-grass) 100px, transparent 100px);
+            background-repeat: no-repeat;
+            background-position: bottom;
         }
         
-        /* 폰트 크기 조정 */
-        h1 { font-size: 18px; }
-        h2 { font-size: 14px; }
+        h1 { font-size: 18px; color: var(--color-dark); text-shadow: 2px 2px var(--mario-red); }
+        h2 { font-size: 14px; color: var(--mario-brick); }
         h3 { font-size: 12px; }
         p { font-size: 10px; }
+        
+        /* ------------------ Layout ------------------- */
+        .container {
+            max-width: 900px;
+            margin: 40px auto 120px; /* 푸터 공간 확보 */
+            padding: 0 15px;
+        }
 
-        /* === 헤더 및 네비게이션 :: 게임 타이틀 화면 === */
-        .diesel-header {
-            background-color: var(--color-panel);
+        /* ------------------ Header & Nav (Level Select) ------------------- */
+        .mario-header {
+            background-color: var(--mario-coin);
             padding: 20px 20px 10px;
-            border: 4px solid var(--color-border);
-            border-bottom: 4px solid var(--color-secondary);
+            border: 4px solid var(--color-dark);
+            border-bottom: 8px solid var(--mario-red);
             text-align: center;
-            box-shadow: 8px 8px 0 #000000; /* 8비트 3D 그림자 */
+            box-shadow: 8px 8px 0 var(--color-dark); 
             margin-bottom: 40px;
         }
 
-        .diesel-header h1 {
-            color: #ffff00; /* 노란색 타이틀 */
-            text-shadow: 4px 4px #ff0000; /* 픽셀 그림자 */
-            margin-bottom: 20px;
-        }
-
         .nav-button {
-            background-color: var(--color-primary);
-            color: var(--color-border);
+            background-color: var(--mario-brick);
+            color: var(--mario-coin);
             text-decoration: none;
             padding: 8px 12px;
             margin: 0 8px 10px;
             display: inline-block;
-            border: 2px solid var(--color-border);
-            box-shadow: 3px 3px 0 #000000; /* 버튼 그림자 */
+            border: 3px solid var(--color-dark);
+            box-shadow: 4px 4px 0 var(--color-dark); 
             transition: all 0.05s;
         }
 
         .nav-button:hover {
             background-color: #ff5555;
-            box-shadow: 1px 1px 0 #000000; /* 눌리는 효과 */
+            box-shadow: 2px 2px 0 var(--color-dark); 
             transform: translate(2px, 2px);
         }
 
-        /* === 본문 컨테이너 및 섹션 :: 레벨 화면 === */
-        .container {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 0 15px;
-        }
-
-        .panel {
-            background-color: var(--color-panel);
+        /* ------------------ Section (Brick Blocks) ------------------- */
+        .mario-section {
+            background-color: var(--mario-brick);
             padding: 30px;
             margin-bottom: 30px;
-            border: 4px solid var(--color-border);
-            box-shadow: 6px 6px 0 #000000; /* 섹션 그림자 */
+            border: 4px solid var(--color-dark);
+            box-shadow: 6px 6px 0 var(--color-dark); 
+            color: var(--color-light); 
         }
-
-        .panel h2 {
-            color: var(--color-secondary);
-            border-bottom: 2px solid var(--color-border);
+        
+        .mario-section h2 {
+            color: var(--mario-coin);
+            border-bottom: 2px solid var(--mario-coin);
             padding-bottom: 5px;
             margin-bottom: 20px;
         }
 
-        /* === 콘텐츠 박스 :: HUD/상태 창 === */
-        .content-box {
-            background-color: #000000;
+        /* ------------------ Content Box (Question Mark Block) ------------------- */
+        .content-block {
+            background-color: var(--mario-coin);
+            color: var(--color-dark);
             padding: 15px;
-            border: 2px dashed var(--color-border);
+            border: 4px solid var(--color-dark);
+            /* 물음표 블록 질감 (픽셀 패턴) */
+            background-image: linear-gradient(45deg, rgba(0,0,0,0.2) 25%, transparent 25%),
+                              linear-gradient(-45deg, rgba(0,0,0,0.2) 25%, transparent 25%),
+                              linear-gradient(45deg, transparent 75%, rgba(0,0,0,0.2) 75%),
+                              linear-gradient(-45deg, transparent 75%, rgba(0,0,0,0.2) 75%);
+            background-size: 16px 16px;
+        }
+        
+        .content-block p {
+            color: var(--color-dark); 
+            text-shadow: none;
         }
 
-        /* === 프로젝트 목록 그리드 === */
+        /* ------------------ Project Grid ------------------- */
         .project-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -111,39 +123,40 @@
         }
 
         .project-item {
-            background-color: #666;
+            background-color: var(--mario-red); 
             padding: 15px;
-            border: 2px solid var(--color-border);
-            box-shadow: 4px 4px 0 #000000;
+            border: 2px solid var(--color-dark);
+            box-shadow: 4px 4px 0 var(--color-dark);
+            color: var(--color-light);
         }
 
-        /* === 버튼 스타일 :: 조이스틱/컨트롤러 버튼 === */
+        /* ------------------ Buttons (Action Items) ------------------- */
         .action-button {
-            background-color: var(--color-primary);
-            color: var(--color-border);
+            background-color: var(--mario-red);
+            color: var(--color-light);
             text-decoration: none;
             padding: 10px 15px;
             display: inline-block;
             margin-top: 15px;
-            border: 2px solid var(--color-border);
-            box-shadow: 3px 3px 0 #000000;
+            border: 2px solid var(--color-dark);
+            box-shadow: 4px 4px 0 var(--color-dark);
             transition: all 0.05s;
-            line-height: 1; /* 픽셀 폰트의 라인 높이 보정 */
+            line-height: 1; 
         }
 
         .action-button:hover {
-            background-color: #ff5555;
-            box-shadow: 1px 1px 0 #000000;
+            background-color: var(--mario-brick);
+            box-shadow: 2px 2px 0 var(--color-dark);
             transform: translate(2px, 2px);
         }
         
         .small-button {
-            padding: 5px 8px;
+            background-color: var(--mario-grass); 
         }
 
-        /* === 링크 스타일 :: 하이라이트 === */
+        /* ------------------ Links ------------------- */
         .link-style {
-            color: #ffff00; /* 노란색 */
+            color: var(--mario-coin); 
             text-decoration: none;
         }
 
@@ -151,59 +164,63 @@
             text-decoration: underline;
         }
 
-        /* === 푸터 :: 게임 오버/크레딧 === */
-        .diesel-footer {
-            background-color: var(--color-bg);
-            color: var(--color-text);
+        /* ------------------ Footer (Ground Block) ------------------- */
+        .mario-footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: var(--mario-grass);
+            color: var(--color-dark);
             text-align: center;
             padding: 15px;
             font-size: 8px;
-            border-top: 2px solid var(--color-border);
+            border-top: 5px solid var(--color-dark);
+            box-shadow: 0 -4px 0 var(--color-dark);
         }
     </style>
-    </head>
+</head>
 <body>
-    <header class="diesel-header">
-        <h1>[당신의 이름]의 포트폴리오</h1>
+    <header class="mario-header">
+        <h1>월드 1-1 :: [당신의 이름]</h1>
         <nav>
-            <a href="#about" class="nav-button">스테이지 1 :: 시작</a>
-            <a href="#projects" class="nav-button">스테이지 2 :: 미션 로그</a>
-            <a href="#contact" class="nav-button">연결 :: COMMS</a>
+            <a href="#about" class="nav-button">스테이지 1 :: 소개</a>
+            <a href="#projects" class="nav-button">스테이지 2 :: 미션</a>
+            <a href="#contact" class="nav-button">버섯 :: 연락</a>
         </nav>
     </header>
 
     <main class="container">
-        <section id="about" class="panel">
+        <section id="about" class="mario-section">
             <h2>플레이어 정보 :: [당신의 이름]</h2>
-            <div class="content-box">
+            <div class="content-block">
                 <p>
-                    [당신의 직무/역할] :: 게임 시작. <br>
+                    직업: [당신의 직무/역할] :: POWER UP! <br>
                     보유 스킬: HTML, CSS, JavaScript, [다른 기술]. <br>
                     미션 목표: [당신의 목표 문구].
                 </p>
-                <a href="#" class="action-button">이력서 :: 획득</a>
+                <a href="#" class="action-button">파일 :: GET COIN</a>
             </div>
         </section>
 
-        <section id="projects" class="panel">
+        <section id="projects" class="mario-section">
             <h2>미션 목록 :: 프로젝트 로그</h2>
             <div class="project-grid">
                 <div class="project-item">
                     <h3>미션 #01 :: [프로젝트 이름]</h3>
                     <p>미션 목표: [간단한 설명]</p>
-                    <a href="#" class="action-button small-button">검토 :: VIEW</a>
+                    <a href="#" class="action-button small-button">검토 :: GO PIPE</a>
                 </div>
                 <div class="project-item">
                     <h3>미션 #02 :: [프로젝트 이름]</h3>
                     <p>미션 목표: [간단한 설명]</p>
-                    <a href="#" class="action-button small-button">검토 :: VIEW</a>
+                    <a href="#" class="action-button small-button">검토 :: GO PIPE</a>
                 </div>
             </div>
         </section>
 
-        <section id="contact" class="panel">
-            <h2>통신 채널 :: 연결</h2>
-            <div class="content-box">
+        <section id="contact" class="mario-section">
+            <h2>공주 구하기 :: 연락</h2>
+            <div class="content-block">
                 <p>
                     통신 포트: <br>
                     이메일: <a href="mailto:your_email@example.com" class="link-style">your_email@example.com</a> <br>
@@ -213,8 +230,8 @@
         </section>
     </main>
 
-    <footer class="diesel-footer">
-        <p>CONGRATULATIONS! &copy; [현재 연도] :: [당신의 이름] :: 게임 종료</p>
+    <footer class="mario-footer">
+        <p>THANK YOU MARIO! &copy; [현재 연도] :: [당신의 이름] :: 1UP!</p>
     </footer>
 </body>
 </html>
