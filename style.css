@@ -3,7 +3,7 @@
     --color-dark: #121212;
     --color-medium: #333333;
     --color-light: #f4f4f4;
-    --color-accent: #b3a32f; /* 골드 또는 딥 레드로 포인트 색상 지정 가능 */
+    --color-accent: #b3a32f; /* 골드 색상으로 포인트 */
 }
 
 * {
@@ -74,7 +74,7 @@ a:hover {
     justify-content: center;
     text-align: center;
     
-    /* 배경 이미지 설정 (가장 중요) */
+    /* 배경 이미지 설정 (images/noir-city.jpg 파일 필요) */
     background: url('images/noir-city.jpg') no-repeat center center/cover; 
     position: relative;
     overflow: hidden;
@@ -180,13 +180,13 @@ a:hover {
     font-size: 0.9rem;
 }
 
-/* --- 프로젝트 섹션 --- */
+/* --- 프로젝트 카드 스타일 --- */
 .project-card {
     background-color: var(--color-medium);
     padding: 30px;
     margin-bottom: 30px;
     border-left: 5px solid var(--color-accent);
-    transition: transform 0.3s;
+    transition: transform 0.3s, opacity 0.5s; /* opacity 트랜지션을 추가하여 필터링 시 부드럽게 처리 */
 }
 
 .project-card:hover {
@@ -206,6 +206,42 @@ a:hover {
     margin-right: 15px;
     font-weight: 700;
     color: var(--color-accent);
+}
+
+/* --- 필터 탭 스타일 --- */
+.filter-tabs {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.filter-button {
+    background-color: transparent;
+    border: 1px solid var(--color-medium);
+    color: var(--color-light);
+    padding: 10px 20px;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 1rem;
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+}
+
+.filter-button:hover {
+    background-color: var(--color-medium);
+    border-color: var(--color-accent);
+}
+
+.filter-button.active {
+    background-color: var(--color-accent);
+    color: var(--color-dark);
+    border-color: var(--color-accent);
+    font-weight: 700;
+}
+
+/* 필터링 시 숨김 처리 */
+.project-card.hidden {
+    display: none;
 }
 
 /* --- 푸터 --- */
