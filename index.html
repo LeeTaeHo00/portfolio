@@ -27,7 +27,7 @@
         <div class="hero-overlay"></div> <div class="container hero-content">
             <p class="greeting" data-animate="fade-in">HELLO, I'M</p>
             <h2 data-animate="fade-in">당신의 이름</h2>
-            <h3 data-animate="fade-in">웹 개발자 | 프론트엔드 엔지니어</h3>
+            <h3 data-animate="fade-in">웹 개발자 | 보안 엔지니어</h3>
             <a href="#projects" class="button primary-button" data-animate="fade-in">작업물 보기</a>
         </div>
     </section>
@@ -43,6 +43,7 @@
                     <li>HTML5 / CSS3</li>
                     <li>JavaScript (ES6+)</li>
                     <li>React / Vue.js 등 주요 프레임워크</li>
+                    <li>Python / C++</li>
                     <li>Git / GitHub</li>
                 </ul>
             </div>
@@ -53,18 +54,49 @@
         <div class="container">
             <h2>✨ PROJECTS</h2>
             
-            <div class="project-card" data-project-id="1">
-                <h3>프로젝트 제목 1</h3>
-                <p><strong>기간:</strong> 2024.01 - 2024.03</p>
-                <p><strong>기술 스택:</strong> HTML, CSS, JavaScript</p>
-                <p>프로젝트 1에 대한 간략한 설명입니다. 이 프로젝트를 통해 어떤 목표를 달성했고, 어떤 기술적 문제를 해결했는지 설명해 보세요.</p>
-                <div class="project-links">
-                    <a href="#" target="_blank">DEMO</a>
-                    <a href="#" target="_blank">GITHUB</a>
-                </div>
+            <div class="filter-tabs">
+                <button class="filter-button active" data-filter="all">전체</button>
+                <button class="filter-button" data-filter="dev">개발 파트</button>
+                <button class="filter-button" data-filter="security">보안 파트</button>
             </div>
 
-            </div>
+            <div class="projects-list">
+                
+                <div class="project-card" data-category="dev">
+                    <h3>[개발] 반응형 쇼핑몰 구축</h3>
+                    <p><strong>기간:</strong> 2024.01 - 2024.03</p>
+                    <p><strong>기술 스택:</strong> React, Node.js, MongoDB</p>
+                    <p>사용자 친화적인 인터페이스와 효율적인 데이터 관리를 목표로 한 풀스택 쇼핑몰 프로젝트입니다. (개발 내용 요약)</p>
+                    <div class="project-links">
+                        <a href="#" target="_blank">DEMO</a>
+                        <a href="#" target="_blank">GITHUB</a>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="security">
+                    <h3>[보안] 웹 취약점 진단 및 개선</h3>
+                    <p><strong>기간:</strong> 2023.10 - 2023.12</p>
+                    <p><strong>기술 스택:</strong> Burp Suite, Python (자동화), OWASP Top 10</p>
+                    <p>특정 웹 서비스에 대한 침투 테스트를 수행하고 XSS, SQL Injection 등 주요 취약점을 보고 및 패치했습니다. (보안 내용 요약)</p>
+                    <div class="project-links">
+                        <a href="#" target="_blank">REPORT</a>
+                        <a href="#" target="_blank">GITHUB (Code)</a>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="dev">
+                    <h3>[개발] 실시간 채팅 서비스</h3>
+                    <p><strong>기간:</strong> 2024.04 - 2024.05</p>
+                    <p><strong>기술 스택:</strong> Vue.js, WebSocket, Express</p>
+                    <p>실시간 데이터 통신을 활용한 채팅 애플리케이션 개발 프로젝트입니다. (개발 내용 요약)</p>
+                    <div class="project-links">
+                        <a href="#" target="_blank">DEMO</a>
+                        <a href="#" target="_blank">GITHUB</a>
+                    </div>
+                </div>
+                
+                </div>
+        </div>
     </section>
 
     <section id="contact" class="section contact">
